@@ -1,11 +1,211 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navigation from '../components/astro/Navigation.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="TeamForge - Creación de Equipos de Trabajo">
+  <Navigation />
+  
+  <main class="min-h-screen pt-16">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+      <!-- Background Effects -->
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute top-20 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute top-40 right-1/4 w-80 h-80 bg-blue-700/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div class="absolute bottom-20 left-1/3 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+      </div>
+
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
+        <div class="text-center animate-fadeIn">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-8">
+            <div class="status-online"></div>
+            <span class="text-sm font-medium text-blue-300">Usuarios en línea ahora</span>
+          </div>
+
+          <!-- Title -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+            <span class="bg-gradient-to-r from-blue-400 via-blue-300 to-blue-200 bg-clip-text text-transparent">
+              Crea equipos
+            </span>
+            <br />
+            <span class="text-white">de trabajo efectivos</span>
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="mx-auto max-w-2xl text-lg sm:text-xl text-slate-400 mb-10 leading-relaxed">
+            Gestiona tus equipos, colabora en tiempo real y mantén a todos conectados. 
+            La plataforma definitiva para la creación y gestión de equipos de trabajo.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/auth/register" class="glow-button text-lg px-8 py-4 flex items-center gap-2">
+              Comenzar gratis
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+            <a href="#features" class="px-6 py-4 rounded-xl text-lg font-medium text-slate-300 hover:text-white border border-slate-700 hover:border-blue-500/30 hover:bg-blue-500/5 transition-all duration-300">
+              Conocer más
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-400">10k+</div>
+              <div class="text-sm text-slate-500 mt-1">Usuarios activos</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-400">5k+</div>
+              <div class="text-sm text-slate-500 mt-1">Equipos creados</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-400">99.9%</div>
+              <div class="text-sm text-slate-500 mt-1">Uptime</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-400">24/7</div>
+              <div class="text-sm text-slate-500 mt-1">Soporte</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 relative">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Todo lo que necesitas para
+            <span class="text-blue-400">gestionar equipos</span>
+          </h2>
+          <p class="text-slate-400 max-w-2xl mx-auto">
+            Herramientas poderosas y fáciles de usar para crear, organizar y mantener tus equipos de trabajo.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div class="glass-card p-8 group">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-6 group-hover:bg-blue-500/20 transition-colors">
+              <svg class="h-7 w-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Gestión de Equipos</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Crea y administra equipos fácilmente. Invita miembros, asigna roles y organiza tu trabajo de manera eficiente.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="glass-card p-8 group">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-6 group-hover:bg-blue-500/20 transition-colors">
+              <svg class="h-7 w-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Tiempo Real</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Ve quién está en línea en este momento. Actualizaciones instantáneas de estado y actividad de tu equipo.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="glass-card p-8 group">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-6 group-hover:bg-blue-500/20 transition-colors">
+              <svg class="h-7 w-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Roles y Permisos</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Define quién puede qué. Sistema de roles flexible con owner, admin y miembros para un control total.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="glass-card p-8 group">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-6 group-hover:bg-blue-500/20 transition-colors">
+              <svg class="h-7 w-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Interfaz Intuitiva</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Diseño moderno y fácil de usar. Navega entre equipos, gestiona miembros y visualiza estados sin complicaciones.
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="glass-card p-8 group">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-6 group-hover:bg-blue-500/20 transition-colors">
+              <svg class="h-7 w-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Seguro y Privado</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Autenticación robusta y políticas de seguridad. Tus datos están protegidos con los más altos estándares.
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="glass-card p-8 group">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-6 group-hover:bg-blue-500/20 transition-colors">
+              <svg class="h-7 w-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Alto Rendimiento</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Construido con tecnología moderna para una experiencia rápida y fluida. Sin esperas, sin interrupciones.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/20 to-transparent"></div>
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center relative">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+          ¿Listo para potenciar tu equipo?
+        </h2>
+        <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
+          Únete a miles de equipos que ya están usando TeamForge para colaborar mejor y ser más productivos.
+        </p>
+        <a href="/auth/register" class="glow-button text-lg px-10 py-4 inline-flex items-center gap-2">
+          Empezar ahora
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-8">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-2">
+            <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-700">
+              <svg class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <span class="font-semibold text-slate-300">TeamForge</span>
+          </div>
+          <p class="text-sm text-slate-500">
+            © 2026 TeamForge. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </main>
 </Layout>

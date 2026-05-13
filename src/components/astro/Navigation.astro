@@ -1,0 +1,81 @@
+---
+import { supabase } from '../../lib/supabase';
+
+const { data: { session } } = await supabase.auth.getSession();
+const isLoggedIn = !!session;
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 border-b border-blue-500/10 bg-slate-950/80 backdrop-blur-xl">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-500/25 group-hover:shadow-blue-500/40 transition-all duration-300">
+          <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </div>
+        <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">
+          TeamForge
+        </span>
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-1">
+        {isLoggedIn ? (
+          <>
+            <a href="/dashboard" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-blue-500/10 transition-all duration-200">
+              Dashboard
+            </a>
+            <a href="/teams" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-blue-500/10 transition-all duration-200">
+              Equipos
+            </a>
+          </>
+        ) : (
+          <a href="/" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-blue-500/10 transition-all duration-200">
+            Inicio
+          </a>
+        )}
+      </div>
+
+      <!-- Auth Buttons -->
+      <div class="flex items-center gap-3">
+        {isLoggedIn ? (
+          <div class="flex items-center gap-3">
+            <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20">
+              <div class="status-online"></div>
+              <span class="text-xs font-medium text-blue-300">En línea</span>
+            </div>
+            <button
+              id="logout-btn"
+              class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-red-500/10 border border-transparent hover:border-red-500/20 transition-all duration-200"
+            >
+              Cerrar sesión
+            </button>
+          </div>
+        ) : (
+          <div class="flex items-center gap-2">
+            <a href="/auth/login" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white transition-all duration-200">
+              Iniciar sesión
+            </a>
+            <a href="/auth/register" class="glow-button text-sm">
+              Registrarse
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  import { supabase } from '../../lib/supabase';
+
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      window.location.href = '/';
+    });
+  }
+</script>
