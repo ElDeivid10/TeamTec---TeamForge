@@ -121,7 +121,15 @@ CREATE POLICY "Los miembros son visibles para usuarios autenticados"
 CREATE POLICY "Los usuarios pueden unirse a equipos"
   ON team_members FOR INSERT
   TO authenticated
-  WITH CHECK (auth.uid() = user_id);
+  WITH CHECK (
+    auth.uid() = user_id
+    OR EXISTS (
+      SELECT 1 FROM team_members
+      WHERE team_id = team_members.team_id
+      AND user_id = auth.uid()
+      AND role IN ('owner', 'admin')
+    )
+  );
 
 CREATE POLICY "Los owners y admins pueden gestionar miembros"
   ON team_members FOR DELETE

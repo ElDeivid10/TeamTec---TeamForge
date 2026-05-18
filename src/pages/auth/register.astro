@@ -197,10 +197,17 @@ import Navigation from '../../components/astro/Navigation.astro';
       });
 
       if (error) {
-        showError(error.message === 'User already registered'
-          ? 'Este correo ya está registrado. Intenta iniciar sesión.'
-          : error.message
-        );
+        let friendlyMessage = error.message;
+        
+        if (error.message === 'User already registered') {
+          friendlyMessage = 'Este correo ya está registrado. Intenta iniciar sesión.';
+        } else if (error.message.includes('rate limit') || error.message.includes('over_email_send_rate_limit')) {
+          friendlyMessage = 'Se ha superado el límite de emails. Espera unos minutos e intenta de nuevo, o desactiva la confirmación de email en tu panel de Supabase (Authentication > Providers > Email > Confirm email).';
+        } else if (error.message.includes('Email logins are disabled')) {
+          friendlyMessage = 'El registro con email está deshabilitado.';
+        }
+
+        showError(friendlyMessage);
         setLoading(false);
         return;
       }
